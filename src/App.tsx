@@ -1,4 +1,5 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router";
+import Navbar from "./components/Navbar";
 import MoviesPage from "./pages/MoviesPage";
 import TvPage from "./pages/TvPage";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
@@ -7,10 +8,7 @@ import TvDetailsPage from "./pages/TvDetailsPage";
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/movies">Movies</Link>
-        <Link to="/tv">TV Shows</Link>
-      </nav>
+      <Navbar />
 
       <Routes>
         <Route path="/movies" element={<MoviesPage />} />
