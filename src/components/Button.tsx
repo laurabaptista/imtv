@@ -4,8 +4,8 @@ type ButtonProps = {
   onClick?: () => void;
 };
 
-function Button(_props: ButtonProps) {
-  return <button></button>;
+function Button(props: ButtonProps) {
+  return <button className={props.variant}>{props.children}</button>;
 }
 
 export default Button;
