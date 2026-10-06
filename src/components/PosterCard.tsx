@@ -12,7 +12,7 @@ type PosterCardProps = {
 
 function PosterCard(props: PosterCardProps) {
   return (
-    <div>
+    <div className="poster-card">
       {props.movie.poster_path && (
         <img
           src={IMAGE_URL + props.movie.poster_path}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import PosterCard from "../components/PosterCard";
+import "./MoviesPage.css";
 
 type Movie = {
   id: number;
@@ -49,12 +50,14 @@ function MoviesPage() {
 
       {loading && <Loader />}
 
-      {!loading &&
-        movies.length > 0 &&
-        movies.map((movie) => {
-          console.log("movie", movie);
-          return <PosterCard key={movie.id} movie={movie} />;
-        })}
+      <div className="row">
+        {!loading &&
+          movies.length > 0 &&
+          movies.map((movie) => {
+            console.log("movie", movie);
+            return <PosterCard key={movie.id} movie={movie} />;
+          })}
+      </div>
 
       {!loading && movies.length === 0 && <div>No data</div>}
     </div>
