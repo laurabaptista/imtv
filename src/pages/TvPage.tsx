@@ -67,7 +67,8 @@ function TvSection(props: TvSectionProps) {
             return (
               <PosterCard
                 key={show.id}
-                movie={{
+                type="tv"
+                item={{
                   id: show.id,
                   title: show.name,
                   poster_path: show.poster_path,

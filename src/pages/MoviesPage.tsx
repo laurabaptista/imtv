@@ -65,7 +65,7 @@ function MoviesSection(props: MoviesSectionProps) {
         {!loading &&
           movies.length > 0 &&
           movies.map((movie) => {
-            return <PosterCard key={movie.id} movie={movie} />;
+            return <PosterCard key={movie.id} item={movie} type="movie" />;
           })}
       </div>
 

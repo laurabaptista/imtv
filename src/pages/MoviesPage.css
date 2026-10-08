@@ -17,3 +17,9 @@
   margin: 0 auto;
   padding: 0 24px;
 }
+
+.poster-card {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}

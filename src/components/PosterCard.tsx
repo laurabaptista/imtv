@@ -1,7 +1,11 @@
+import { Link } from "react-router";
+import RatingStars from "./RatingStars";
+
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
 type PosterCardProps = {
-  movie: {
+  type: "movie" | "tv";
+  item: {
     id: number;
     title: string;
     poster_path: string | null;
@@ -11,18 +15,17 @@ type PosterCardProps = {
 };
 
 function PosterCard(props: PosterCardProps) {
+  const detailsPath = "/" + props.type + "/" + props.item.id;
+
   return (
-    <div className="poster-card">
-      {props.movie.poster_path && (
-        <img
-          src={IMAGE_URL + props.movie.poster_path}
-          alt={props.movie.title}
-        />
+    <Link to={detailsPath} className="poster-card">
+      {props.item.poster_path && (
+        <img src={IMAGE_URL + props.item.poster_path} alt={props.item.title} />
       )}
-      <h3>{props.movie.title}</h3>
-      <p>Rating: {props.movie.vote_average}</p>
-      <p>{props.movie.release_date.slice(0, 4)}</p>
-    </div>
+      <h3>{props.item.title}</h3>
+      <RatingStars rating={props.item.vote_average} />
+      <p>{props.item.release_date.slice(0, 4)}</p>
+    </Link>
   );
 }
 
