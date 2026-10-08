@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
+import HomePage from "./pages/HomePage";
 import MoviesPage from "./pages/MoviesPage";
 import TvPage from "./pages/TvPage";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
@@ -11,7 +12,7 @@ function App() {
       <div className="container">
         <Navbar />
         <Routes>
-          <Route path="/" element={<MoviesPage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/tv" element={<TvPage />} />
           <Route path="/movie/:id" element={<MovieDetailsPage />} />

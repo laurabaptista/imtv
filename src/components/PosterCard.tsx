@@ -21,7 +21,7 @@ function PosterCard(props: PosterCardProps) {
       )}
       <h3>{props.movie.title}</h3>
       <p>Rating: {props.movie.vote_average}</p>
-      <p>{props.movie.release_date}</p>
+      <p>{props.movie.release_date.slice(0, 4)}</p>
     </div>
   );
 }
