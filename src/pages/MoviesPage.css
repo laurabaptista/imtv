@@ -4,8 +4,16 @@
   gap: 16px;
 }
 
+.row-scroll {
+  display: flex;
+  overflow-x: auto;
+}
+
 .poster-card {
   flex: 0 0 200px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .poster-card img {
@@ -16,10 +24,4 @@
   max-width: 1600px;
   margin: 0 auto;
   padding: 0 24px;
-}
-
-.poster-card {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
 }

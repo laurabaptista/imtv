@@ -7,24 +7,27 @@ type PosterCardProps = {
   type: "movie" | "tv";
   item: {
     id: number;
-    title: string;
+    title?: string;
+    name?: string;
     poster_path: string | null;
     vote_average: number;
-    release_date: string;
+    release_date?: string;
+    first_air_date?: string;
   };
 };
 
 function PosterCard(props: PosterCardProps) {
-  const detailsPath = "/" + props.type + "/" + props.item.id;
+  const title = props.item.title || props.item.name;
+  const date = props.item.release_date || props.item.first_air_date;
 
   return (
-    <Link to={detailsPath} className="poster-card">
+    <Link to={`/${props.type}/${props.item.id}`} className="poster-card">
       {props.item.poster_path && (
-        <img src={IMAGE_URL + props.item.poster_path} alt={props.item.title} />
+        <img src={`${IMAGE_URL}${props.item.poster_path}`} alt={title} />
       )}
-      <h3>{props.item.title}</h3>
+      <h3>{title}</h3>
       <RatingStars rating={props.item.vote_average} />
-      <p>{props.item.release_date.slice(0, 4)}</p>
+      <p>{date?.slice(0, 4)}</p>
     </Link>
   );
 }

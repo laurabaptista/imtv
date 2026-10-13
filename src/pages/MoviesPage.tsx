@@ -61,7 +61,7 @@ function MoviesSection(props: MoviesSectionProps) {
 
       {loading && <Loader />}
 
-      <div className="row">
+      <div className={props.category === "popular" ? "row" : "row row-scroll"}>
         {!loading &&
           movies.length > 0 &&
           movies.map((movie) => {
