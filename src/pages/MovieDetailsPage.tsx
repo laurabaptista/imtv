@@ -1,10 +1,10 @@
-// src/pages/MovieDetailsPage.tsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import RatingStars from "../components/RatingStars";
 import Badge from "../components/Badge";
 import CastCard from "../components/CastCard";
 import CrewCard from "../components/CrewCard";
+import Loader from "../components/Loader";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -50,11 +50,7 @@ function MovieDetailsPage() {
     fetchMovie();
   }, [params.id]);
 
-  if (!movie) return <p>Loading...</p>;
-
-  const directors = movie.credits.crew.filter(
-    (person) => person.job === "Director",
-  );
+  if (!movie) return <Loader />;
 
   return (
     <div className="movie-details-page">
@@ -76,11 +72,6 @@ function MovieDetailsPage() {
       <h2>Overview</h2>
       <p>{movie.overview}</p>
 
-      <h2>Director</h2>
-      {directors.map((person) => (
-        <CrewCard key={person.id} name={person.name} job={person.job} />
-      ))}
-
       <h2>Cast</h2>
       {movie.credits.cast.slice(0, 10).map((person) => (
         <CastCard
@@ -88,6 +79,15 @@ function MovieDetailsPage() {
           name={person.name}
           character={person.character}
           profile_path={person.profile_path}
+        />
+      ))}
+
+      <h2>Crew</h2>
+      {movie.credits.crew.slice(0, 10).map((person) => (
+        <CrewCard
+          key={`${person.id}-${person.job}`}
+          name={person.name}
+          job={person.job}
         />
       ))}
     </div>

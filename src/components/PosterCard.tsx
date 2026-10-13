@@ -26,8 +26,8 @@ function PosterCard(props: PosterCardProps) {
         <img src={`${IMAGE_URL}${props.item.poster_path}`} alt={title} />
       )}
       <h3>{title}</h3>
-      <RatingStars rating={props.item.vote_average} />
       <p>{date?.slice(0, 4)}</p>
+      <RatingStars rating={props.item.vote_average} />
     </Link>
   );
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Loader from "../components/Loader";
 import PosterCard from "../components/PosterCard";
 import "./MoviesPage.css";
+import Loader from "../components/Loader";
 
 type Movie = {
   id: number;

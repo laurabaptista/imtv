@@ -1,10 +1,10 @@
-// src/pages/TvDetailsPage.tsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import RatingStars from "../components/RatingStars";
 import Badge from "../components/Badge";
 import CastCard from "../components/CastCard";
 import CrewCard from "../components/CrewCard";
+import Loader from "../components/Loader";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -26,6 +26,7 @@ type Tv = {
       character: string;
       profile_path: string | null;
     }[];
+    crew: { id: number; name: string; job: string }[];
   };
 };
 
@@ -51,7 +52,7 @@ function TvDetailsPage() {
     fetchTv();
   }, [params.id]);
 
-  if (!tv) return <p>Loading...</p>;
+  if (!tv) return <Loader />;
 
   return (
     <div className="tv-details-page">
@@ -86,6 +87,15 @@ function TvDetailsPage() {
           name={person.name}
           character={person.character}
           profile_path={person.profile_path}
+        />
+      ))}
+
+      <h2>Crew</h2>
+      {tv.credits.crew.slice(0, 10).map((person) => (
+        <CrewCard
+          key={`${person.id}-${person.job}`}
+          name={person.name}
+          job={person.job}
         />
       ))}
     </div>
