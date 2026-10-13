@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Loader from "../components/Loader";
 import PosterCard from "../components/PosterCard";
+import Loader from "../components/Loader";
 
 type Show = {
   id: number;
@@ -60,23 +60,11 @@ function TvSection(props: TvSectionProps) {
 
       {loading && <Loader />}
 
-      <div className="row">
+      <div className={props.category === "popular" ? "row" : "row row-scroll"}>
         {!loading &&
           shows.length > 0 &&
           shows.map((show) => {
-            return (
-              <PosterCard
-                key={show.id}
-                type="tv"
-                item={{
-                  id: show.id,
-                  title: show.name,
-                  poster_path: show.poster_path,
-                  vote_average: show.vote_average,
-                  release_date: show.first_air_date,
-                }}
-              />
-            );
+            return <PosterCard key={show.id} type="tv" item={show} />;
           })}
       </div>
 
