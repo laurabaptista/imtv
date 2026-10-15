@@ -1,3 +1,5 @@
+import "./Button.css";
+
 type ButtonProps = {
   children: string;
   variant?: "color1" | "color2";
@@ -5,7 +7,14 @@ type ButtonProps = {
 };
 
 function Button(props: ButtonProps) {
-  return <button className={props.variant}>{props.children}</button>;
+  return (
+    <button
+      className={`button ${props.variant || "color1"}`}
+      onClick={props.onClick}
+    >
+      {props.children}
+    </button>
+  );
 }
 
 export default Button;

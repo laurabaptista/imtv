@@ -38,8 +38,8 @@ input {
 #root {
   width: 100%;
   max-width: none;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 4px;
   border: none;
   text-align: left;
 }
@@ -47,7 +47,7 @@ input {
 h1,
 h2,
 h3 {
-  margin: 8 0 8px;
+  margin: 8px 0;
   font-weight: 500;
 }
 
@@ -74,6 +74,24 @@ img {
 
 .poster-card {
   transition: transform 0.3s ease;
+  text-align: center;
+  margin-top: 6px;
+}
+
+section h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-top: 40px;
+}
+
+.poster-card h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.poster-card p {
+  font-size: 0.8rem;
 }
 
 .poster-card:hover {

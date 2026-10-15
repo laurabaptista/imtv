@@ -10,8 +10,8 @@ import "./App.css";
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <div className="container">
-        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
