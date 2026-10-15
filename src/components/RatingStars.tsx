@@ -1,11 +1,13 @@
+import "./RatingStars.css";
+
 type StarType = "full" | "half" | "empty";
 
 type RatingStarsProps = {
   rating: number;
 };
 
-function RatingStars({ rating }: RatingStarsProps) {
-  const ratingOutOfFive = rating / 2;
+function RatingStars(props: RatingStarsProps) {
+  const ratingOutOfFive = props.rating / 2;
 
   const stars: StarType[] = Array.from({ length: 5 }, (_, index) => {
     const starNumber = index + 1;
@@ -22,18 +24,12 @@ function RatingStars({ rating }: RatingStarsProps) {
   });
 
   return (
-    <div>
-      {stars.map((star, index) => {
-        if (star === "full") {
-          return <span key={index}>★</span>;
-        }
-
-        if (star === "half") {
-          return <span key={index}>½</span>;
-        }
-
-        return <span key={index}>☆</span>;
-      })}
+    <div className="rating-stars">
+      {stars.map((star, index) => (
+        <span key={index} className={`star ${star}`}>
+          ★
+        </span>
+      ))}
     </div>
   );
 }

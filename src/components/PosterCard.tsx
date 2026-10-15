@@ -22,10 +22,14 @@ function PosterCard(props: PosterCardProps) {
 
   return (
     <Link to={`/${props.type}/${props.item.id}`} className="poster-card">
-      {props.item.poster_path && (
+      {props.item.poster_path ? (
         <img src={`${IMAGE_URL}${props.item.poster_path}`} alt={title} />
+      ) : (
+        <div className="poster-placeholder"></div>
       )}
-      <h3>{title}</h3>
+      <h3>
+        <span>{title}</span>
+      </h3>
       <p>{date?.slice(0, 4)}</p>
       <RatingStars rating={props.item.vote_average} />
     </Link>

@@ -1,0 +1,23 @@
+/* src/components/RatingStars.css (new file) */
+.rating-stars {
+  letter-spacing: 2px;
+}
+
+.rating-stars .star.full {
+  color: #e8d079;
+}
+
+.rating-stars .star.empty {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.rating-stars .star.half {
+  background: linear-gradient(
+    90deg,
+    #e8d079 50%,
+    rgba(255, 255, 255, 0.25) 50%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
