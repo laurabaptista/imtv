@@ -5,6 +5,7 @@ import TvPage from "./pages/TvPage";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
 import TvDetailsPage from "./pages/TvDetailsPage";
 import Navbar from "./components/Navbar";
+import "./App.css";
 
 function App() {
   return (
