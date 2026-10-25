@@ -81,14 +81,16 @@ function TvDetailsPage() {
       ))}
 
       <h2>Cast</h2>
-      {tv.credits.cast.slice(0, 10).map((person) => (
-        <CastCard
-          key={person.id}
-          name={person.name}
-          character={person.character}
-          profile_path={person.profile_path}
-        />
-      ))}
+      <div className="cast-row">
+        {tv.credits.cast.slice(0, 20).map((person) => (
+          <CastCard
+            key={person.id}
+            name={person.name}
+            character={person.character}
+            profile_path={person.profile_path}
+          />
+        ))}
+      </div>
 
       <h2>Crew</h2>
       {tv.credits.crew.slice(0, 10).map((person) => (

@@ -1,0 +1,33 @@
+.cast-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.cast-card {
+  flex: 0 0 100px;
+  text-align: center;
+}
+
+.cast-card img,
+.cast-placeholder {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cast-placeholder {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.cast-card h3 {
+  margin: 0 0 2px;
+  font-size: 0.85rem;
+}
+
+.cast-card p {
+  font-size: 0.75rem;
+}
