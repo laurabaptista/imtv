@@ -52,6 +52,20 @@ function MovieDetailsPage() {
 
   if (!movie) return <Loader />;
 
+  const keyJobs = [
+    "Director",
+    "Writer",
+    "Screenplay",
+    "Producer",
+    "Executive Producer",
+    "Director of Photography",
+    "Original Music Composer",
+  ];
+
+  const crew = movie.credits.crew
+    .filter((person) => keyJobs.includes(person.job))
+    .slice(0, 12);
+
   return (
     <div className="movie-details-page">
       {movie.poster_path && (
@@ -85,13 +99,15 @@ function MovieDetailsPage() {
       </div>
 
       <h2>Crew</h2>
-      {movie.credits.crew.slice(0, 10).map((person) => (
-        <CrewCard
-          key={`${person.id}-${person.job}`}
-          name={person.name}
-          job={person.job}
-        />
-      ))}
+      <div className="crew-grid">
+        {crew.map((person) => (
+          <CrewCard
+            key={`${person.id}-${person.job}`}
+            name={person.name}
+            job={person.job}
+          />
+        ))}
+      </div>
     </div>
   );
 }

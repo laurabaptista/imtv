@@ -1,0 +1,17 @@
+.crew-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px 24px;
+}
+
+.crew-card p {
+  margin: 0 0 2px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.crew-card h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}

@@ -1,3 +1,5 @@
+import "./CrewCard.css";
+
 type CrewCardProps = {
   name: string;
   job: string;
@@ -6,8 +8,8 @@ type CrewCardProps = {
 function CrewCard(props: CrewCardProps) {
   return (
     <div className="crew-card">
-      <h3>{props.name}</h3>
       <p>{props.job}</p>
+      <h3>{props.name}</h3>
     </div>
   );
 }
