@@ -1,3 +1,4 @@
+// src/pages/TvDetailsPage.tsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import RatingStars from "../components/RatingStars";
@@ -5,6 +6,7 @@ import Badge from "../components/Badge";
 import CastCard from "../components/CastCard";
 import CrewCard from "../components/CrewCard";
 import Loader from "../components/Loader";
+import PosterCard from "../components/PosterCard";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -28,6 +30,15 @@ type Tv = {
     }[];
     crew: { id: number; name: string; job: string }[];
   };
+  recommendations: {
+    results: {
+      id: number;
+      name: string;
+      poster_path: string | null;
+      vote_average: number;
+      first_air_date: string;
+    }[];
+  };
 };
 
 function TvDetailsPage() {
@@ -35,9 +46,10 @@ function TvDetailsPage() {
   const [tv, setTv] = useState<Tv>();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchTv = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/tv/${params.id}?append_to_response=credits`,
+        `https://api.themoviedb.org/3/tv/${params.id}?append_to_response=credits,recommendations`,
         {
           headers: {
             Authorization:
@@ -89,11 +101,6 @@ function TvDetailsPage() {
       <h2>Overview</h2>
       <p>{tv.overview}</p>
 
-      <h2>Created by</h2>
-      {tv.created_by.map((person) => (
-        <CrewCard key={person.id} name={person.name} job="Creator" />
-      ))}
-
       <h2>Cast</h2>
       <div className="cast-row">
         {tv.credits.cast.slice(0, 20).map((person) => (
@@ -108,6 +115,9 @@ function TvDetailsPage() {
 
       <h2>Crew</h2>
       <div className="crew-grid">
+        {tv.created_by.map((person) => (
+          <CrewCard key={person.id} name={person.name} job="Creator" />
+        ))}
         {crew.map((person) => (
           <CrewCard
             key={`${person.id}-${person.job}`}
@@ -116,6 +126,17 @@ function TvDetailsPage() {
           />
         ))}
       </div>
+
+      {tv.recommendations.results.length > 0 && (
+        <>
+          <h2>More like this</h2>
+          <div className="row row-scroll">
+            {tv.recommendations.results.map((item) => (
+              <PosterCard key={item.id} type="tv" item={item} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

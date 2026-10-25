@@ -5,6 +5,7 @@ import Badge from "../components/Badge";
 import CastCard from "../components/CastCard";
 import CrewCard from "../components/CrewCard";
 import Loader from "../components/Loader";
+import PosterCard from "../components/PosterCard";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -26,6 +27,15 @@ type Movie = {
     }[];
     crew: { id: number; name: string; job: string }[];
   };
+  recommendations: {
+    results: {
+      id: number;
+      title: string;
+      poster_path: string | null;
+      vote_average: number;
+      release_date: string;
+    }[];
+  };
 };
 
 function MovieDetailsPage() {
@@ -33,9 +43,10 @@ function MovieDetailsPage() {
   const [movie, setMovie] = useState<Movie>();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchMovie = async () => {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${params.id}?append_to_response=credits`,
+        `https://api.themoviedb.org/3/movie/${params.id}?append_to_response=credits,recommendations`,
         {
           headers: {
             Authorization:
@@ -108,6 +119,17 @@ function MovieDetailsPage() {
           />
         ))}
       </div>
+
+      {movie.recommendations.results.length > 0 && (
+        <>
+          <h2>More like this</h2>
+          <div className="row row-scroll">
+            {movie.recommendations.results.map((item) => (
+              <PosterCard key={item.id} type="movie" item={item} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
